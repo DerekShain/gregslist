@@ -14,10 +14,10 @@ export class Job{
         return /*html*/`
         <div class="col-lg-3 mb-4 listing">
         <div class="card">
-          <div class="card-body">
+          <div class="card-body shadow">
             <h5 class="d-flex justify-content-between">
-              <span class="shadow">${this.name}-${this.company}</span>
-              <span>${this.pay}</span>
+              <span class="">${this.name}-${this.company}</span>
+              <span>$ ${this.pay}</span>
             </h5>
             <p>${this.skill}</p>
             <p>${this.description}</p>

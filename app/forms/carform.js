@@ -30,8 +30,8 @@ export function getCarFormTemplate() {
         <span>mileage:</span>
         <span id="miles" class="ms-2">0</span>
       </label>
-      <input type="range" name="mileage" id="mileage" min="1" max="1000"
-        onchange="app.carsController.showMiles()" class="form-control" step=".05">
+      <input type="range" name="mileage" id="mileage" min="1" max="1000000"
+        onchange="app.carsController.showMiles()" class="form-control">
     </div>
     <div class="form-group">
       <label for="color" class="">color:</label>
@@ -50,8 +50,8 @@ export function getCarFormTemplate() {
       <input type="url" class="form-control" name="img" id="img" required>
     </div>
     <div class="button-group my-3">
-      <button type="reset" class="btn btn-secondary">clear</button>
-      <button type="submit" class="btn btn-primary">submit</button>
+      <button type="reset" class="btn btn-secondary">Clear</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </div>
   </form>
     `

@@ -40,7 +40,7 @@ function _drawHouses() {
     showHouses() {
       _drawHouses()
       document.getElementById('controls').innerHTML = `
-        <button class="btn btn-success" onclick="app.housesController.toggleHouseForm()">Add House</button>
+        <button class="btn btn-dark text-light" onclick="app.housesController.toggleHouseForm()">Add House</button>
       `
      document.getElementById('forms').innerHTML = getHouseFormTemplate()
     }

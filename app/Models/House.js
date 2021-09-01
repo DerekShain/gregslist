@@ -18,11 +18,13 @@ export class House{
       <div class="col-lg-3 mb-4 listing">
         <div class="card">
           <img src="${this.img}" alt="listing image" class="rounded">
-          <div class="card-body">
+          <div class="card-body shadow">
             <h5 class="d-flex justify-content-between">
               <span class="shadow">Year - ${this.year}- Rooms - ${this.rooms}</span>
-              <span>${this.price}</span>
+              <span>$ ${this.price}</span>
             </h5>
+            <p>${this.size} sq.ft</p>
+            <p>${this.garage} car garage</p>
             <p>${this.description}</p>
           </div>
           </div>
