@@ -21,6 +21,10 @@ export function getJobFormTemplate(){
         <label for="description" class="">Description:</label>
         <textarea type="text" class="form-control" name="description" id="description" rows="5" required></textarea>
     </div>
+    <div class="form-group">
+        <label for="number" class="">Phone Number:</label>
+        <input type="text" class="form-control" name="number" id="number" required>
+        </div>
     <div class="button-group my-3">
       <button type="reset" class="btn btn-secondary">Clear</button>
       <button type="submit" class="btn btn-primary">Submit</button>

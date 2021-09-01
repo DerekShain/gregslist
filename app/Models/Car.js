@@ -10,6 +10,7 @@ export class Car{
         this.description = carData.description
         this.price = carData.price
         this.img = carData.img
+        this.number = carData.number
     }
 
     get CardTemplate(){
@@ -20,9 +21,10 @@ export class Car{
           <div class="card-body">
             <h5 class="d-flex justify-content-between">
               <span style="color: ${this.color}" class="shadow">${this.make}-${this.model}</span>
-              <span>${this.price}</span>
+              <span>$ ${this.price}</span>
             </h5>
             <p>${this.description}</p>
+            <p>Contact: ${this.number}</p>
           </div>
           </div>
         </div>

@@ -29,6 +29,10 @@ export function getHouseFormTemplate(){
       <label for="img" class="">Image:</label>
       <input type="url" class="form-control" name="img" id="img">
     </div>
+    <div class="form-group">
+    <label for="number" class="">Contact number:</label>
+    <input type="text" class="form-control" name="number" id="number" required>
+    </div>
     <div class="button-group my-3">
       <button type="reset" class="btn btn-secondary">Clear</button>
       <button type="submit" class="btn btn-primary">Submit</button>

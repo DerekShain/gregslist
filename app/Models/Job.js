@@ -8,6 +8,7 @@ export class Job{
         this.company = jobData.company
         this.description = jobData.description
         this.pay = jobData.pay
+        this.number = jobData.number
     }
 
     get CardTemplate(){
@@ -21,6 +22,7 @@ export class Job{
             </h5>
             <p>${this.skill}</p>
             <p>${this.description}</p>
+            <p>Contact: ${this.number}</p>
           </div>
           </div>
         </div>

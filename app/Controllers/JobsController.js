@@ -29,6 +29,7 @@ export class JobsController {
         company: form.company.value,
         description: form.description.value,
         pay: form.pay.value,
+        number: form.number.value
     }
 
     try {

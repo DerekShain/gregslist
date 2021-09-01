@@ -31,7 +31,8 @@ export class CarsController {
       price: form.price.value,
       color: form.color.value,
       description: form.description.value,
-      img: form.img.value
+      img: form.img.value,
+      number: form.number.value
     }
 
     try {

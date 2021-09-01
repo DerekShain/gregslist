@@ -24,7 +24,8 @@ function _drawHouses() {
             garage: form.garage.value,
             price: form.price.value,
             description: form.description.value,
-            img: form.img.value
+            img: form.img.value,
+            number: form.number.value
 
         }
 

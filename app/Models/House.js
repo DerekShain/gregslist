@@ -10,6 +10,7 @@ export class House{
       this.price = houseData.price
       this.description = houseData.description
       this.img = houseData.img
+      this.number = houseData.number
     }
 
   get CardTemplate(){
@@ -26,6 +27,7 @@ export class House{
             <p>${this.size} sq.ft</p>
             <p>${this.garage} car garage</p>
             <p>${this.description}</p>
+            <p>Call ${this.number}</p>
           </div>
           </div>
         </div>
