@@ -64,6 +64,10 @@ function _drawHouses() {
         document.getElementById('house-form').classList.toggle('visually-hidden')
       console.log('[TODO fill me in]')
     }
+    toggleTemplate() {
+      document.getElementById('template-form').classList.toggle('visually-hidden')
+    console.log('[TODO fill me in]')
+  }
 
     async deleteHouse(houseId){
       // @ts-ignore
