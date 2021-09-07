@@ -12,28 +12,33 @@ function _drawHouses() {
     constructor() {
       // TODO register the listener for houses
       ProxyState.on('houses', _drawHouses)
+      
     }
   
-    addHouse(){
+    async addHouse(){
         event.preventDefault()
+        /**
+         * @type {HTMLFormElement}
+         */
+        // @ts-ignore
         const form = event.target
+
         const houseData = {
             year: form.year.value,
-            size: form.size.value,
-            rooms: form.rooms.value,
-            garage: form.garage.value,
+            levels: form.levels.value,
+            bedrooms: form.bedrooms.value,
+            bathrooms: form.bathrooms.value,
             price: form.price.value,
             description: form.description.value,
-            img: form.img.value,
-            number: form.number.value
-
+            imgUrl: form.imgUrl.value,
         }
 
         try{
-            housesService.addHouse(houseData)
+            await housesService.addHouse(houseData)
         } catch (e){
+          // TODO draw errors
             form.make.classlist.add('border-danger')
-            console.error('Need to do this', e)
+            console.error('Need to do this [TODO]', e)
             return
         }
         form.reset()
@@ -44,11 +49,19 @@ function _drawHouses() {
         <button class="btn btn-dark text-light" onclick="app.housesController.toggleHouseForm()">Add House</button>
       `
      document.getElementById('forms').innerHTML = getHouseFormTemplate()
+     housesService.getHouses()
     }
   
     toggleHouseForm() {
         document.getElementById('house-form').classList.toggle('visually-hidden')
       console.log('[TODO fill me in]')
     }
-  
+
+    async deleteHouse(houseId){
+      try{
+        await housesService.deleteHouse(houseId)
+      }catch (error){
+      alert(error.message)
+      }
+    }
   }

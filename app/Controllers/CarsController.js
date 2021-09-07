@@ -12,31 +12,30 @@ export class CarsController {
   constructor() {
     ProxyState.on('cars', _drawCars)
     //             ^^^^ magic string must match a property on the appstate
+    // carsService.getCars()
   }
 
-  addCar() {
+  // NOTE Changed this data below. 
+  async addCar() {
     event.preventDefault() // do not forget this line on form submissions
     /**
      * @type {HTMLFormElement}
      */
     // @ts-ignore
     const form = event.target
-    // TODO get data from form
 
     const carData = {
       make: form.make.value,
       model: form.model.value,
       year: form.year.value,
-      mileage: form.mileage.value,
       price: form.price.value,
-      color: form.color.value,
       description: form.description.value,
-      img: form.img.value,
-      number: form.number.value
+      imgUrl: form.imgUrl.value,
     }
 
     try {
-      carsService.addCar(carData)
+      await carsService.addCar(carData)
+      // NOTE -^^^ this is for error handeling 
     } catch (e) {
       // TODO draw errors
       form.make.classList.add('border-danger')
@@ -54,6 +53,7 @@ export class CarsController {
       <button class="btn btn-dark text-light" onclick="app.carsController.toggleCarForm()">Add Car</button>
     `
     document.getElementById('forms').innerHTML = getCarFormTemplate()
+    carsService.getCars()
   }
 
   showMiles() {
@@ -64,6 +64,15 @@ export class CarsController {
 
   toggleCarForm() {
     document.getElementById('car-form').classList.toggle('visually-hidden')
+  }
+
+  async deleteCar(carId){
+    try{
+      // Note add an are you sure alert
+      await carsService.deleteCar(carId)
+    }catch (error){
+      alert(error.message)
+    }
   }
 
 }

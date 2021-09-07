@@ -11,11 +11,11 @@ function _drawJobs() {
 export class JobsController {
   constructor() {
     ProxyState.on('jobs', _drawJobs)
-    //             ^^^^ magic string must match a property on the appstate
+    
   }
 
-  addJob() {
-    event.preventDefault() // do not forget this line on form submissions
+  async addJob() {
+    event.preventDefault()
     /**
      * @type {HTMLFormElement}
      */
@@ -24,20 +24,19 @@ export class JobsController {
     // TODO get data from form
 
     const jobData = {
-        name: form.name.value,
-        skill: form.skill.value,
+        jobTitle: form.jobTitle.value,
         company: form.company.value,
+        rate: form.rate.value,
+        hours: form.hours.value,
         description: form.description.value,
-        pay: form.pay.value,
-        number: form.number.value
     }
 
     try {
-      jobsService.addJob(jobData)
+      await jobsService.addJob(jobData)
     } catch (e) {
       // TODO draw errors
       form.make.classList.add('border-danger')
-      console.error('[TODO] you were supposed to do this', e)
+      console.error('[TODO] ...need to do this', e)
       return
     }
 
@@ -51,10 +50,17 @@ export class JobsController {
       <button class="btn btn-dark text-light" onclick="app.jobsController.toggleJobForm()">Add Job</button>
     `
     document.getElementById('forms').innerHTML = getJobFormTemplate()
+    jobsService.getJobs()
   }
 
   toggleJobForm() {
     document.getElementById('job-form').classList.toggle('visually-hidden')
   }
-
+  async deleteJobs(jobId){
+    try{
+      await jobsService.deleteJob(jobId)
+    }catch(error){
+      alert(error.message)
+    }
+  }
 }

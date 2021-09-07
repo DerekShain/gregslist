@@ -22,18 +22,6 @@ export function getCarFormTemplate() {
       <input type="number" class="form-control" name="price" id="price" min="0" max="9999999">
     </div>
     <div class="form-group">
-      <label for="mileage" class="">
-        <span>Mileage:</span>
-        <span id="miles" class="ms-2">0</span>
-      </label>
-      <input type="range" name="mileage" id="mileage" min="1" max="1000000"
-        onchange="app.carsController.showMiles()" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="color" class="">Color:</label>
-      <input type="color" class="form-control" name="color" id="color">
-    </div>
-    <div class="form-group">
       <label for="year" class="">Year:</label>
       <input type="year" class="form-control" name="year" id="year">
     </div>
@@ -42,12 +30,8 @@ export function getCarFormTemplate() {
       <textarea type="text" class="form-control" name="description" id="description" rows="5"></textarea>
     </div>
     <div class="form-group">
-      <label for="img" class="">Image:</label>
-      <input type="url" class="form-control" name="img" id="img" required>
-    </div>
-    <div class="form-group">
-    <label for="number" class="">Contact Number:</label>
-    <input type="text" class="form-control" name="number" id="number">
+      <label for="imgUrl" class="">Image:</label>
+      <input type="url" class="form-control" name="imgUrl" id="imgUrl" required>
     </div>
     <div class="button-group my-3">
       <button type="reset" class="btn btn-secondary">Clear</button>
