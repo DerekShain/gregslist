@@ -1,6 +1,7 @@
 import { ProxyState } from "../AppState.js"
 import { getCarFormTemplate } from "../forms/carform.js"
 import { carsService } from "../Services/CarsService.js"
+import { jobsService } from "../Services/JobsService.js"
 
 function _drawCars() {
   let template = ''
@@ -42,6 +43,14 @@ export class CarsController {
       console.error('[TODO] you were supposed to do this', e)
       return
     }
+     // @ts-ignore
+     Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'New Car Added!',
+      showConfirmButton: false,
+      timer: 1500
+    })
 
     form.reset()
 
@@ -50,7 +59,7 @@ export class CarsController {
   showCars() {
     _drawCars()
     document.getElementById('controls').innerHTML = `
-      <button class="btn btn-dark text-light" onclick="app.carsController.toggleCarForm()">Add Car</button>
+      <button class="btn btn-black text-light shadow" onclick="app.carsController.toggleCarForm()">Add Car</button>
     `
     document.getElementById('forms').innerHTML = getCarFormTemplate()
     carsService.getCars()
@@ -67,12 +76,26 @@ export class CarsController {
   }
 
   async deleteCar(carId){
-    try{
-      // Note add an are you sure alert
-      await carsService.deleteCar(carId)
-    }catch (error){
-      alert(error.message)
+   // @ts-ignore
+   Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+        await carsService.deleteCar(carId)
+      // @ts-ignore
+      Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
     }
+  })
   }
 
 }

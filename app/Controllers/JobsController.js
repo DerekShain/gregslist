@@ -39,6 +39,14 @@ export class JobsController {
       console.error('[TODO] ...need to do this', e)
       return
     }
+     // @ts-ignore
+     Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'New Job Added!',
+      showConfirmButton: false,
+      timer: 1500
+    })
 
     form.reset()
 
@@ -47,7 +55,7 @@ export class JobsController {
   showJobs() {
     _drawJobs()
     document.getElementById('controls').innerHTML = `
-      <button class="btn btn-dark text-light" onclick="app.jobsController.toggleJobForm()">Add Job</button>
+      <button class="btn btn-black shadow text-light" onclick="app.jobsController.toggleJobForm()">Add Job</button>
     `
     document.getElementById('forms').innerHTML = getJobFormTemplate()
     jobsService.getJobs()
@@ -56,11 +64,27 @@ export class JobsController {
   toggleJobForm() {
     document.getElementById('job-form').classList.toggle('visually-hidden')
   }
-  async deleteJobs(jobId){
-    try{
-      await jobsService.deleteJob(jobId)
-    }catch(error){
-      alert(error.message)
-    }
+  async deleteJob(jobId){
+    // @ts-ignore
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+          await jobsService.deleteJob(jobId)
+        // @ts-ignore
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
+    
   }
 }

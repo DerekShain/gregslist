@@ -1,6 +1,6 @@
 export function getJobFormTemplate(){
     return /*html*/`
-    <form class="bg-white rounded p-3 shadow visually-hidden" onsubmit="app.jobsController.addJob()" id="job-form">
+    <form class="bg-dark rounded p-3 shadow visually-hidden" onsubmit="app.jobsController.addJob()" id="job-form">
     <div class="form-group">
         <label for="jobTitle" class="">Job Title:</label>
         <input type="text" class="form-control" name="jobTitle" id="jobTitle" required>

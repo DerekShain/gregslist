@@ -32,7 +32,7 @@ function _drawHouses() {
             description: form.description.value,
             imgUrl: form.imgUrl.value,
         }
-
+        
         try{
             await housesService.addHouse(houseData)
         } catch (e){
@@ -41,12 +41,20 @@ function _drawHouses() {
             console.error('Need to do this [TODO]', e)
             return
         }
+        // @ts-ignore
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'New House Added!',
+          showConfirmButton: false,
+          timer: 1500
+        })
         form.reset()
     }
     showHouses() {
       _drawHouses()
       document.getElementById('controls').innerHTML = `
-        <button class="btn btn-dark text-light" onclick="app.housesController.toggleHouseForm()">Add House</button>
+        <button class="btn btn-black shadow text-light" onclick="app.housesController.toggleHouseForm()">Add House</button>
       `
      document.getElementById('forms').innerHTML = getHouseFormTemplate()
      housesService.getHouses()
@@ -58,10 +66,25 @@ function _drawHouses() {
     }
 
     async deleteHouse(houseId){
-      try{
-        await housesService.deleteHouse(houseId)
-      }catch (error){
-      alert(error.message)
-      }
+      // @ts-ignore
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+            await housesService.deleteHouse(houseId)
+          // @ts-ignore
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        }
+      })
     }
   }

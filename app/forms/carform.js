@@ -1,6 +1,6 @@
 export function getCarFormTemplate() {
     return /*html*/`
-    <form class="bg-white rounded p-3 shadow visually-hidden" onsubmit="app.carsController.addCar()"
+    <form class="bg-dark rounded p-3 shadow visually-hidden" onsubmit="app.carsController.addCar()"
     id="car-form">
     <div class="form-group">
       <label for="make" class="">Make:</label>

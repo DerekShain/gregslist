@@ -14,17 +14,17 @@ export class House{
   get CardTemplate(){
       return /*html*/`
 
-      <div class="col-lg-3 mb-4 listing">
-        <div class="card">
+      <div class="col-lg-4 mb-4 p-3 listing">
+        <div class="card bg-dark">
           <img src="${this.imgUrl}" alt="listing image" class="rounded">
           <div class="card-body shadow">
             <h5 class="d-flex justify-content-between">
-              <span class="shadow">Year - ${this.year}, ${this.bedrooms} Beds, ${this.bathrooms} Baths</span>
-              <span>$ ${this.price}</span>
+              <span class="">${this.year}, ${this.bedrooms} Bed, ${this.bathrooms} Bath</span>
+              <span>$${this.price}</span>
             </h5>
             <p>${this.levels} levels</p>
             <p>${this.description}</p>
-            <button class="btn btn-danger" onclick="app.housesController.deleteHouse('${this.id}')">Delete</button>
+            <i class="fas fa-trash-alt" onclick="app.housesController.deleteHouse('${this.id}')"></i>
           </div>
           </div>
         </div>

@@ -12,16 +12,21 @@ export class Job{
 
     get CardTemplate(){
         return /*html*/`
-        <div class="col-lg-3 mb-4 listing">
-        <div class="card">
+        <div class="col-lg-4 mb-4 p-3 listing">
+        <div class="card bg-dark">
           <div class="card-body shadow">
             <h5 class="d-flex justify-content-between">
-              <span class="">${this.jobTitle}-${this.company}</span>
-              <span>Pay Rate: ${this.rate}</span>
+              <span class="">${this.jobTitle}</span>
             </h5>
-            <p>${this.description}</p>
-            <p>hours: ${this.hours}</p>
-            <button class="btn btn-danger" onclick="app.jobsController.deleteJob('${this.id}')">Delete</button>
+            <h6>
+            <span>${this.company}</span>
+            </h6>
+            <div>
+            <li>Pay Rate: ${this.rate}</li>
+            <li>${this.description}</li>
+            <li>Hours: ${this.hours}</li>
+            </div>
+            <i class="fas fa-trash-alt" onclick="app.jobsController.deleteJob('${this.id}')"></i>
           </div>
           </div>
         </div>

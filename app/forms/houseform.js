@@ -1,6 +1,6 @@
 export function getHouseFormTemplate(){
   return /*html*/`
-    <form class = "bg-white rounded p-3 shadow visually-hidden" onsubmit="app.housesController.addHouse()" id="house-form">
+    <form class = "bg-dark rounded p-3 shadow visually-hidden" onsubmit="app.housesController.addHouse()" id="house-form">
     <div class="form-group">
       <label for="year" class="">Year Built:</label>
       <input type="text" class="form-control" name="year" id="year" required>

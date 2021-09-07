@@ -7,7 +7,10 @@ const api = axios.create({
 })
 class JobsService {
   async deleteJob(jobId){
+
+    
     await api.delete(jobId)
+    ProxyState.jobs = ProxyState.jobs.filter(c => c.id !== jobId)
   }
   async addJob(jobData) {
     let res = await api.post('', jobData)
